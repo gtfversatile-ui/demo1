@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VitalRise Fitness</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --accent:#FF5A5F;
+      --dark:#0F1724;
+      --muted:#9AA4B2;
+      --card-bg: rgba(255,255,255,0.03);
+      --glass: rgba(255,255,255,0.06);
+      --max-width:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:#E6EEF3;
+      background:linear-gradient(180deg,#07101a 0%, #081423 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+    }
+
+    .wrap{max-width:var(--max-width);margin:0 auto;padding:24px;}
+
+    /* NAV */
+    header{
+      position:fixed;left:0;right:0;top:16px;z-index:40;
+      display:flex;justify-content:center;pointer-events:none;
+    }
+    .nav{
+      width:100%;max-width:var(--max-width);display:flex;align-items:center;justify-content:space-between;
+      background:linear-gradient(180deg, rgba(8,18,30,0.55), rgba(8,18,30,0.25));
+      border-radius:12px;padding:10px 16px;backdrop-filter: blur(6px);
+      box-shadow:0 6px 18px rgba(2,6,12,0.6);
+      pointer-events:auto;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#FF9A76);
+      display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:18px;box-shadow:0 4px 14px rgba(255,90,95,0.18);
+    }
+    nav a{color:#D9E6EF;text-decoration:none;margin-left:18px;font-weight:600}
+    .cta-btn{background:var(--accent);color:white;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:700;box-shadow:0 6px 18px rgba(255,90,95,0.16)}
+    .cta-btn:focus{outline:3px solid rgba(255,90,95,0.25);outline-offset:2px}
+
+    /* HERO */
+    .hero{
+      height:88vh;min-height:560px;display:grid;align-items:center;border-radius:18px;
+      margin-top:40px;overflow:hidden;position:relative;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;inset:0;
+      background-image: url("https://source.unsplash.com/3840x2160/?fitness,gym");
+      background-position:center;
+      background-size:cover;
+      transform:scale(1.02);
+      filter:contrast(0.9) saturate(1.1) brightness(0.6);
+      z-index:0;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;inset:0;
+      background:linear-gradient(135deg, rgba(3,11,20,0.45) 10%, rgba(2,8,15,0.7) 70%);
+      z-index:1;
+    }
+    .hero-content{position:relative;z-index:2;padding:56px;display:flex;gap:40px;align-items:center}
+    .hero-left{flex:1;max-width:640px}
+    h1{margin:0;font-size:clamp(28px,5vw,56px);line-height:1.02;font-weight:800;letter-spacing:-0.02em}
+    p.lead{color:var(--muted);margin:18px 0 28px;font-size:clamp(14px,1.6vw,18px)}
+    .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+    .card{background:var(--card-bg);padding:18px;border-radius:14px;box-shadow:0 6px 20px rgba(2,6,12,0.5);backdrop-filter: blur(6px);min-width:160px}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.06);font-weight:700;color:#fff;font-size:13px}
+
+    /* FEATURES */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+    .feature{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:12px}
+    .feature h3{margin:8px 0;font-size:18px}
+    .feature p{margin:0;color:var(--muted);font-size:14px}
+
+    /* CLASSES */
+    .classes{display:flex;gap:18px;margin-top:34px;flex-wrap:wrap}
+    .class-card{flex:1;min-width:220px;background:var(--glass);padding:16px;border-radius:12px}
+    .class-card img{width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:12px}
+
+    /* FOOTER & CONTACT */
+    footer{margin-top:36px;padding:28px 18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))}
+    .foot-grid{display:flex;gap:20px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+
+    /* RESPONSIVE */
+    @media (max-width:900px){
+      .hero-content{padding:28px;grid-template-columns:1fr}
+      .features{grid-template-columns:repeat(2,1fr)}
+      .hero{height:72vh}
+    }
+    @media (max-width:600px){
+      nav a{display:none}
+      .features{grid-template-columns:1fr}
+      .classes{flex-direction:column}
+      .hero{margin-top:16px;border-radius:10px}
+      header{top:8px}
+      .wrap{padding:16px}
+    }
+
+  </style>
+</head>
+<body>
+
+  <header aria-hidden="false">
+    <div class="nav" role="navigation" aria-label="Main navigation">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">VR</div>
+        <div>
+          <div style="font-weight:800">VitalRise</div>
+          <div style="font-size:12px;color:var(--muted)">Strength • Movement • Focus</div>
+        </div>
+      </div>
+
+      <nav aria-label="Primary">
+        <a href="#programs">Programs</a>
+        <a href="#trainers">Trainers</a>
+        <a href="#pricing">Pricing</a>
+        <a class="cta-btn" href="#join">Join Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" id="top" role="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <div class="hero-left" id="hero-title">
+          <span class="pill" aria-hidden="true">NEW · 30 DAY CHALLENGE</span>
+          <h1>Elevate your fitness. Train smarter, move stronger.</h1>
+          <p class="lead">Personalized coaching, modern strength training, and recovery plans that fit your life. Built for all levels — from first-timers to elite athletes.</p>
+
+          <div class="hero-cta" role="group" aria-label="Hero call to actions">
+            <a class="cta-btn" href="#programs">Start Free Trial</a>
+            <a class="card" href="#pricing" style="display:inline-flex;align-items:center;gap:10px">
+              <strong>View Plans</strong>
+              <span style="color:var(--muted);font-size:13px">from $14/mo</span>
+            </a>
+          </div>
+
+          <div class="features" style="margin-top:22px">
+            <div class="feature" aria-hidden="false">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="display:block"><path d="M12 2v20" stroke="#FF9A76" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <h3>Personalized Plans</h3>
+              <p>Adaptive workouts tailored to goals and schedule, updated weekly.</p>
+            </div>
+            <div class="feature">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="display:block"><circle cx="12" cy="12" r="9" stroke="#FF9A76" stroke-width="1.6"/></svg>
+              <h3>Expert Coaches</h3>
+              <p>Certified trainers guiding form, progression, and recovery.</p>
+            </div>
+            <div class="feature">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="display:block"><path d="M4 20h16" stroke="#FF9A76" stroke-width="1.6" stroke-linecap="round"/></svg>
+              <h3>Track Progress</h3>
+              <p>Metrics and weekly summaries help you stay consistent.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside style="width:360px;min-width:260px" aria-labelledby="stats-title">
+          <div id="stats-title" style="margin-bottom:12px;font-weight:700">Quick Stats</div>
+
+          <div class="card" style="margin-bottom:12px">
+            <div style="font-size:12px;color:var(--muted)">Active Members</div>
+            <div style="font-size:22px;font-weight:800">12,452</div>
+          </div>
+
+          <div class="card" style="display:flex;gap:12px;align-items:center">
+            <div style="flex:1">
+              <div style="font-size:12px;color:var(--muted)">Avg Weekly Sessions</div>
+              <div style="font-size:20px;font-weight:800">4.2</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:12px;color:var(--muted)">Satisfaction</div>
+              <div style="font-size:20px;font-weight:800">4.9★</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="programs" style="margin-top:28px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <h2 style="margin:0">Programs</h2>
+        <p style="color:var(--muted);margin:0">Strength, HIIT, Mobility — scalable for every level.</p>
+      </div>
+
+      <div class="classes" aria-live="polite" style="margin-top:16px">
+        <article class="class-card" aria-labelledby="class-1-title">
+          <img src="https://source.unsplash.com/800x600/?strength,weights" alt="Weight training session" loading="lazy">
+          <h3 id="class-1-title">Strength Foundation</h3>
+          <p style="color:var(--muted)">8-week progressive barbell and bodyweight program to build durable strength.</p>
+        </article>
+
+        <article class="class-card" aria-labelledby="class-2-title">
+          <img src="https://source.unsplash.com/800x600/?cardio,hiit" alt="Group HIIT class" loading="lazy">
+          <h3 id="class-2-title">HIIT & Conditioning</h3>
+          <p style="color:var(--muted)">Short, intense sessions that boost endurance and burn fat.</p>
+        </article>
+
+        <article class="class-card" aria-labelledby="class-3-title">
+          <img src="https://source.unsplash.com/800x600/?yoga,stretching" alt="Mobility and stretching" loading="lazy">
+          <h3 id="class-3-title">Mobility & Recovery</h3>
+          <p style="color:var(--muted)">Daily mobility routines and guided recovery sessions.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="pricing" style="margin-top:36px">
+      <h2>Pricing</h2>
+      <div style="display:flex;gap:16px;margin-top:12px;flex-wrap:wrap">
+        <div class="card" style="flex:1;min-width:200px">
+          <div style="font-size:13px;color:var(--muted)">Monthly</div>
+          <div style="font-weight:800;font-size:22px">$14<span style="font-weight:600;color:var(--muted);font-size:14px">/mo</span></div>
+          <p style="color:var(--muted);margin-top:8px">Access to all programs, community, and weekly check-ins.</p>
+        </div>
+        <div class="card" style="flex:1;min-width:200px">
+          <div style="font-size:13px;color:var(--muted)">Pro</div>
+          <div style="font-weight:800;font-size:22px">$39<span style="font-weight:600;color:var(--muted);font-size:14px">/mo</span></div>
+          <p style="color:var(--muted);margin-top:8px">Includes 1-on-1 coaching and custom programming.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:36px">
+      <h2>Contact / Book a Free Consult</h2>
+      <div style="display:flex;gap:18px;margin-top:12px;flex-wrap:wrap">
+        <form style="flex:1;min-width:280px;background:var(--glass);padding:16px;border-radius:12px" aria-label="Contact form" onsubmit="event.preventDefault();alert('Form demo — integrate your backend')">
+          <label style="display:block;margin-bottom:8px;font-size:13px">Name<input required type="text" style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:0;background:rgba(255,255,255,0.03);color:inherit"></label>
+          <label style="display:block;margin-bottom:8px;font-size:13px">Email<input required type="email" style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:0;background:rgba(255,255,255,0.03);color:inherit"></label>
+          <label style="display:block;margin-bottom:8px;font-size:13px">Message<textarea rows="4" style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:0;background:rgba(255,255,255,0.03);color:inherit"></textarea></label>
+          <button class="cta-btn" type="submit">Request Consult</button>
+        </form>
+
+        <div style="flex:1;min-width:260px;color:var(--muted);">
+          <p style="margin-top:0">Prefer a quick call? Email <a href="mailto:hello@vitalrise.example" style="color:var(--accent)">hello@vitalrise.example</a> or call <strong style="color:#fff">(555) 321-9876</strong>.</p>
+          <div style="margin-top:12px">
+            <strong>Location</strong>
+            <p style="margin:6px 0;color:var(--muted)">Downtown Studio • 123 Wellness Ave</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer aria-label="Footer" style="margin-top:36px">
+      <div class="foot-grid">
+        <div>
+          <div style="font-weight:800">VitalRise</div>
+          <div style="color:var(--muted);font-size:13px">Move better. Live stronger.</div>
+        </div>
+
+        <div style="color:var(--muted);font-size:13px">© <span id="year"></span> VitalRise. All rights reserved.</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // small accessibility and dynamic bits
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // ensure hero image is descriptive for assistive tech (background image has text content and visible contrast)
+  </script>
+</body>
+</html>
